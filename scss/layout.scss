@@ -1,3 +1,6 @@
+@import "vars";
+@import "mixins";
+
 img {
   vertical-align: top;
 }
@@ -13,6 +16,9 @@ img {
     margin-bottom: 50px;
     ul {
       display: flex;
+      li {
+        user-select: none;
+      }
     }
   }
   #player {
@@ -25,11 +31,42 @@ img {
         margin: 0 10px;
         border: 5px solid transparent;
         border-radius: 100%;
+        user-select: none;
         &.on {
           border-color: #000;
         }
         img {
           width: 80px;
+        }
+      }
+    }
+  }
+  #result {
+    margin-top: 50px;
+    ul {
+      display: flex;
+      justify-content: center;
+      li {
+        width: 40px;
+        height: 40px;
+        color: #fff;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        margin: 0 5px;
+        &.win {
+          background-color: rgb(3, 116, 207);
+          @include longShadow(darken(rgb(3, 116, 207), 20), right, 40);
+        }
+        &.lose {
+          background-color: rgb(243, 49, 0);
+          @include longShadow(darken(rgb(243, 49, 0), 20), right, 40);
+        }
+        &.draw {
+          background-color: rgb(97, 97, 97);
+          @include longShadow(darken(rgb(97, 97, 97), 20), right, 40);
         }
       }
     }
