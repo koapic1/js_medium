@@ -37,6 +37,10 @@
         </ul> -->
       </div>
     </div>
+    <div id="cover">
+      <h2>To Be Continue~~</h2>
+      <button id="btnRestart">restart game</button>
+    </div>
   </body>
   <script>
     let sel = 0;
@@ -50,6 +54,8 @@
     const comList = document.querySelectorAll("#com ul li"); // 배열처럼 생겨먹은 유사 배열  NodeList
     const players = document.querySelectorAll("#player ul li"); // 배열처럼 생겨먹은 유사 배열  NodeList
     const playersList = document.querySelector("#player ul"); // 배열처럼 생겨먹은 유사 배열  NodeList
+    const cover = document.querySelector("#cover");
+    const btnRestart = document.querySelector("#btnRestart");
 
     // for (let i = 0; i < comList.length; i++) {
     //   comList[i].style.display = "none";
@@ -99,6 +105,17 @@
         count++;
         if (count >= 3) {
           clearTimeout(gameIdx);
+          cover.style.display = "flex";
+          btnRestart.addEventListener("click", () => {
+            cover.style.display = "none";
+            count = 0;
+            resultList.innerHTML = "";
+            gameIdx = setTimeout(() => {
+              clearIdx = setInterval(comChoice, 30);
+              element.classList.remove("on");
+              playersList.classList.remove("prevent");
+            }, 1000);
+          });
         }
       });
     });
