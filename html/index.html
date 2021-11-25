@@ -28,14 +28,46 @@
     </div>
   </body>
   <script>
-    const tempArray = [1, 2, 3, 4, 5];
-    console.log(tempArray);
+    const tempArray = ["apple", "banana", "orange"];
+
+    //iterable
+    tempArray.forEach((element, index, array) => {
+      //console.log(element, "===", index, "===", array);
+    });
+
     let sel = 0;
     const comList = document.querySelectorAll("#com ul li"); // 배열처럼 생겨먹은 유사 배열  NodeList
-    for (let i = 0; i < comList.length; i++) {
-      comList[i].style.display = "none";
-    }
-    comList[sel].style.display = "block";
+    const players = document.querySelectorAll("#player ul li"); // 배열처럼 생겨먹은 유사 배열  NodeList
+    const playersList = document.querySelectorAll("#player ul"); // 배열처럼 생겨먹은 유사 배열  NodeList
+
+    // for (let i = 0; i < comList.length; i++) {
+    //   comList[i].style.display = "none";
+    // }
+
     console.log(comList);
+
+    //let count = 0;
+    //비동기 실행... 나중에  setInterval, setTimeout, node에 걸린 이벤트, ajax
+    const comChoice = () => {
+      comList.forEach((element, index) => {
+        element.style.display = "none";
+      });
+      comList[sel].style.display = "block"; //0,1,2
+      sel = Math.floor(Math.random() * 3); //0 ~ 2.99999999
+    };
+    let clearIdx = setInterval(comChoice, 30);
+    players.forEach((element, index) => {
+      element.addEventListener("click", () => {
+        //다른거 li에 있는 class on 지우기...
+        clearInterval(clearIdx);
+        setTimeout(() => {
+          clearIdx = setInterval(comChoice, 30);
+          element.classList.remove("on");
+          playersList.classList.remove("prevent");
+        }, 1000);
+        element.classList.add("on");
+        playersList.classList.add("prevent");
+      });
+    });
   </script>
 </html>
