@@ -11,6 +11,14 @@ img {
   h1 {
     font-size: 32px;
     margin: 100px 0;
+    text-align: center;
+    span {
+      display: block;
+      &.sub {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+    }
   }
   #com {
     margin-bottom: 50px;

@@ -2,7 +2,11 @@ img { vertical-align: top; }
 
 .wrap { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
 
-.wrap h1 { font-size: 32px; margin: 100px 0; }
+.wrap h1 { font-size: 32px; margin: 100px 0; text-align: center; }
+
+.wrap h1 span { display: block; }
+
+.wrap h1 span.sub { font-size: 20px; margin-top: 20px; }
 
 .wrap #com { margin-bottom: 50px; }
 
