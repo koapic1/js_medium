@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="wrpa">
+            <div><input type="text" placeholder="1~100 숫자를 입력하세요." id="num" /></div>
+            <div><button id="btnConfirm">확인</button></div>
+        </div>
+    </body>
+    <script>
+        const random = Math.ceil(Math.random() * 100);
+        //숫자를 입력 -> 확인버튼을 누르면 -> aleat을 통해서 up / down 인지를 알려준다.
+        //정답이면 정답이라고 알려주고 몇번만에 찾았는지 갯수도 알려줌
+        console.log(random);
+
+        const num = document.querySelector("#num");
+        const btnConfirm = document.querySelector("#btnConfirm");
+        let count = 0;
+        function ddang(msg, dom) {
+            alert(msg);
+            dom.value = "";
+            dom.focus();
+            count++;
+        }
+        function check() {
+            const selectNum = num.value;
+            if (selectNum < random) {
+                //alert("Up");
+                ddang("Up", num);
+            } else if (selectNum > random) {
+                //alert("Down");
+                ddang("Down", num);
+            } else {
+                alert("정답 " + count + "번 만에 맞췄습니다.");
+            }
+        }
+        num.addEventListener("keyup", function (e) {
+            //console.log("마우스이벤트 테스트");
+            console.log(e.key);
+            const selectKeyboard = e.key;
+            if (selectKeyboard === "Enter") {
+                check();
+            }
+        });
+        btnConfirm.addEventListener("click", function () {
+            check();
+        });
+    </script>
+</html>

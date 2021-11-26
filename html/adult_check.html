@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <!-- <div><input type="text" name="" id="age" placeholder="나이를 입력허세요." style="width: 300px" /></div> -->
+            <div><input type="text" name="" id="age" placeholder="생년월일을 입력하세요. ex)19910505" style="width: 300px" /></div>
+            <div><button id="btnConfirm">확인</button></div>
+        </div>
+    </body>
+    <script>
+        //나이를 입력 받아서 올해 기준으로 만 20살이 되지 않으면 경고창 띄우기
+        const age = document.querySelector("#age");
+        const btnConfirm = document.querySelector("#btnConfirm");
+        const now = new Date();
+        const year = now.getFullYear();
+        // console.log(year);
+        btnConfirm.addEventListener("click", function () {
+            const txtage = age.value;
+            const tempYear = Number(txtage.slice(0, 4));
+            console.log(year - tempYear);
+            const gap = year - tempYear;
+            // if (txtage < 20) { //나이를 입력할 경우
+            //     alert("미성년자는 출입할 수 없습니다.");
+            //     age.value = "";
+            // }
+            if (gap < 20) {
+                alert("미성년자는 출입할 수 없습니다.");
+                age.value = "";
+            }
+        });
+        // const msg = "Hello World";
+        // console.log(msg.slice(0, 7));
+    </script>
+</html>
